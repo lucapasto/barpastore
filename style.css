@@ -1,0 +1,258 @@
+:root {
+    --bg: #0f1220;
+    --surface: #171a2b;
+    --primary: #7b5cff;
+    --primary-2: #ff7e5f;
+    --accent: #2dd4bf;
+    --text: #e8e8f0;
+    --muted: #a5a7b3;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+body {
+    font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: radial-gradient(1200px 800px at 20% 0%, rgba(123,92,255,0.15), transparent),
+                radial-gradient(1000px 700px at 100% 20%, rgba(45,212,191,0.12), transparent),
+                var(--bg);
+    color: var(--text);
+    text-align: center;
+}
+
+header {
+    background: linear-gradient(135deg, rgba(123,92,255,0.35), rgba(255,126,95,0.35));
+    color: var(--text);
+    padding: 16px 20px 36px;
+    text-align: center;
+    animation: fadeIn 1.2s ease both;
+    backdrop-filter: blur(6px);
+}
+
+.header-meta {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: var(--shadow);
+    font-size: 0.9rem;
+}
+
+h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    letter-spacing: 0.5px;
+    font-size: 3rem;
+    margin: 0 0 8px;
+}
+
+.display {
+    font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    font-size: clamp(2.8rem, 6vw, 5.2rem);
+    line-height: 0.95;
+    margin-bottom: 12px;
+}
+
+h2 {
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+main {
+    padding: 24px 20px 48px;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1100px;
+    margin: 0 auto 24px;
+    padding: 6px 10px;
+}
+
+.brand {
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 18px;
+}
+
+.nav-links a { opacity: 0.9; }
+.nav-links a:hover { opacity: 1; }
+
+.hero {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    align-items: end;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 12px 10px 24px;
+}
+
+.hero-right { text-align: right; }
+
+.cta-link {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    color: var(--text);
+    opacity: 0.9;
+}
+.cta-link:hover { opacity: 1; }
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li.card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+    margin: 8px 0;
+    padding: 12px 10px; 
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    font-size: 0.95rem;
+}
+
+li.card:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 14px 40px rgba(0,0,0,0.35);
+    border-color: rgba(255,255,255,0.18);
+}
+
+a {
+    color: var(--text);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.lead {
+    font-size: 1.25rem;
+    color: var(--muted);
+    margin: 8px 0 0;
+}
+
+.subtitle {
+    font-size: 1.05rem;
+    color: var(--muted);
+    margin: 4px 0 24px;
+}
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 999px;
+    font-weight: 600;
+    color: #0f1220;
+    background: #fff;
+    margin: 6px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    box-shadow: var(--shadow);
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.btn-facebook {
+    background: linear-gradient(135deg, #1877f2, #60a5fa);
+    color: #fff;
+}
+
+.btn-instagram {
+    background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af, #515bd4);
+    color: #fff;
+}
+
+.social-section p {
+    margin: 12px 0 0;
+}
+
+.services-section h2 {
+    margin-top: 8px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 640px) {
+    h1 {
+        font-size: 2.2rem;
+    }
+    .container {
+        padding: 0 12px;
+    }
+}
+
+/* Hero image con citazione */
+.hero-image {
+    max-width: 1100px;
+    margin: 16px auto 28px;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    background: url('https://pasqualiniilcaffe.it/wp-content/uploads/2018/09/mangiare-chicci-caffe.jpeg') center/cover no-repeat;
+    position: relative;
+    min-height: 320px;
+}
+
+.image-quote {
+    position: absolute;
+    right: 6%;
+    bottom: 10%;
+    max-width: 520px;
+    text-align: left;
+}
+
+.image-quote blockquote {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(0.95rem, 1.6vw, 1.2rem);
+    line-height: 1.6;
+    color: #e9eef6;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.45);
+}
+
+.image-quote cite {
+    display: block;
+    margin-top: 8px;
+    color: #d0d6e0;
+    opacity: 0.9;
+}
