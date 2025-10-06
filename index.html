@@ -10,19 +10,15 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <a class="skip-link" href="#main" role="link">Salta al contenuto</a>
     <header class="main-header">
         <div class="header-content">
             <div class="header-text">
                 <h1 class="display">Bar Pastore</h1>
                 <p class="subtitle">dal 1977</p>
                 <div class="header-description">
-                    <p>Il tuo bar di fiducia nel centro di Bagnara</p>
+                    <p>Il tuo bar di fiducia</p>
                 </div>
-            </div>
-            <div class="header-meta">
-                <span class="badge"><strong>📍 Indirizzo:</strong> Via Nova 5</span>
-                <span class="badge"><strong>👨‍💼 Gestore:</strong> Antonio</span>
-                <span class="badge"><strong>👴 Fondatore:</strong> Virginio</span>
             </div>
         </div>
         <div class="header-navigation" id="home">
@@ -35,7 +31,7 @@
         </div>
     </header>
     <div class="container">
-    <main>
+    <main id="main" tabindex="-1">
         <p class="lead">Benvenuti al Bar Pastore</p>
         <p class="subtitle">Tradizione, qualità e accoglienza dal 1977.</p>
         <section class="hero-image">
@@ -43,7 +39,7 @@
                 <blockquote>
                     "Il caffè è un balsamo per il cuore e lo spirito."
                 </blockquote>
-                <cite>— Giuseppe Verdi</cite>
+                <cite>Giuseppe Verdi</cite>
             </div>
         </section>
         <section class="services-section" id="servizi">
@@ -61,11 +57,11 @@
         </section>
         <section class="services-section" id="chi-siamo">
             <h2>Chi siamo</h2>
-            <p>Il Bar Pastore è un'istituzione, ed essendo tale ci distinguiamo per la nostra tradizione e la nostra qualità. 
+            <p>Il Bar Pastore è un'istituzione ed essendo tale ci distinguiamo per la nostra tradizione e la nostra qualità. 
                Fondato nel 1977 da mio padre Virginio, da allora abbiamo guadagnato la fiducia di molti clienti che ritornano 
-               ogni giorno per un caffè o una partita a carte. I nostri clienti più fidati sono amici e parenti, e siamo lieti di accoglierli ogni giorno, 
-               scambiondoci sempre una risata e un cenno di affetto. Oggi è gestito da me, Antonio Pastore, uno dei quattro figli di Virginio, 
-               e da mia moglie Giuseppina. Se vuoi conoscerci meglio ci trovate nel centro di Bagnara, in Via Nova 5.
+               per un caffè o una partita a carte: siamo lieti di accoglierli ogni giorno, 
+               scambiando sempre una risata e un cenno di affetto. Oggi è gestito da me, Antonio Pastore e da mia moglie Giuseppina. 
+               Se vuoi conoscerci meglio ci trovate nel centro di Bagnara, in Via Nova 5.
             </p>
         </section>
         <section id="contatti">
@@ -87,9 +83,56 @@
                 <a class="posizione" href="https://www.google.com/maps/place/Via+Nova,+5,+82010+Bagnara+BN/@41.0535599,14.7905149,17z/data=!3m1!4b1!4m6!3m5!1s0x133a3176cd04359f:0x6677bcebdcae738b!8m2!3d41.0535599!4d14.7930898!16s%2Fg%2F11bw43bwb1?entry=ttu&g_ep=EgoyMDI1MTAwMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">Clicca qui 🥳</a>
             </p>
         </section>
+        
     </main>
     </div>
-    
+    <!-- Sticky CTA (mobile) -->
+    <div class="sticky-cta" role="navigation" aria-label="Azioni rapide">
+        <a href="tel:0824846017" class="sticky-cta__btn call" aria-label="Chiama il bar">📞 Chiama</a>
+        <a href="https://wa.me/393923475095?text=Ciao%Antonio!" class="sticky-cta__btn whatsapp" target="_blank" rel="noopener" aria-label="Scrivi su WhatsApp">💬 WhatsApp</a>
+        <a href="https://www.google.com/maps/place/Pastore+Antonio/@41.0535599,14.7930898,17z/data=!4m15!1m8!3m7!1s0x133a3176cd04359f:0x6677bcebdcae738b!2sVia+Nova,+5,+82010+Bagnara+BN!3b1!8m2!3d41.0535599!4d14.7930898!16s%2Fg%2F11bw43bwb1!3m5!1s0x133a3176cd376bf3:0xe64d0fc3b7e10614!8m2!3d41.0535681!4d14.7930951!16s%2Fg%2F1hc3d1sh3?entry=ttu&g_ep=EgoyMDI1MTAwMS4wIKXMDSoASAFQAw%3D%3D" class="sticky-cta__btn directions" target="_blank" rel="noopener" aria-label="Ottieni indicazioni">🗺️ Indicazioni</a>
+    </div>
+    <script>
+    // Modifica il testo della sezione del footer da "Informazioni Legali" a "Info"
+    document.addEventListener('DOMContentLoaded', function() {
+        // Trova la sezione del footer con il titolo "Informazioni Legali"
+        const footerSections = document.querySelectorAll('.footer-section h3');
+        footerSections.forEach(h3 => {
+            if (h3.textContent.trim() === 'Informazioni Legali') {
+                h3.textContent = 'Info';
+            }
+        });
+
+        // Aggiungi un id al footer per il collegamento
+        const footer = document.querySelector('footer.footer');
+        if (footer) {
+            footer.setAttribute('id', 'footer-info');
+        }
+
+        // Trova la voce di menu "Info" nell'header o aggiungila se non esiste
+        let nav = document.querySelector('.header-nav');
+        if (nav && !nav.querySelector('a.nav-item[href="#footer-info"]')) {
+            // Crea la voce di menu "Info"
+            const infoItem = document.createElement('a');
+            infoItem.className = 'nav-item';
+            infoItem.href = '#footer-info';
+            infoItem.textContent = 'Info';
+            nav.appendChild(infoItem);
+
+            // Aggiungi lo smooth scroll anche a questa voce
+            infoItem.addEventListener('click', function(e) {
+                e.preventDefault();
+                const footerSection = document.getElementById('footer-info');
+                if (footerSection) {
+                    footerSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                // Gestione classe active
+                document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+                infoItem.classList.add('active');
+            });
+        }
+    });
+    </script>
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
@@ -100,15 +143,6 @@
                     <p><strong>Telefono:</strong> <a href="tel:0824846017">0824 846017</a></p>
                     <p><strong>Indirizzo:</strong> Via Nova 5, Bagnara (BN)</p>
                     <p><strong>Gestore:</strong> Antonio Pastore</p>
-                </div>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Prenota ora</h3>
-                <div class="social-links">
-                    <a href="tel:3923470595" class="social-link whatsapp" aria-label="WhatsApp">
-                        <span>💬</span> WhatsApp
-                    </a>
                 </div>
             </div>
             
@@ -132,7 +166,6 @@
             <div class="footer-bottom-content">
                 <p>&copy; 2024 Bar Pastore. Tutti i diritti riservati.</p>
                 <p>Dal 1977 con passione e tradizione</p>
-
             </div>
         </div>
     </footer>
