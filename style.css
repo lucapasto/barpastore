@@ -20,6 +20,23 @@ body {
     text-align: center;
 }
 
+/* Accessibilità: link "salta al contenuto" */
+.skip-link {
+    position: absolute;
+    left: 8px;
+    top: -48px;
+    background: #fff;
+    color: #0f1220;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-weight: 700;
+    box-shadow: var(--shadow);
+    z-index: 1000;
+}
+.skip-link:focus {
+    top: 8px;
+}
+
 /* Main Header */
 .main-header {
     background: linear-gradient(135deg, rgba(123,92,255,0.4), rgba(255,126,95,0.4));
@@ -47,14 +64,7 @@ body {
     font-weight: 400;
 }
 
-.header-meta {
-    display: inline-flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 10px;
-    align-items: center;
-    justify-content: center;
-}
+
 
 .badge {
     display: inline-flex;
@@ -137,6 +147,13 @@ main {
     background: rgba(45,212,191,0.1);
 }
 
+/* Stato corrente accessibile per la navigazione */
+.nav-item[aria-current="page"] {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+    background: rgba(45,212,191,0.1);
+}
+
 .hero {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
@@ -187,6 +204,18 @@ a:hover {
     text-decoration: underline;
 }
 
+/* Focus visibile coerente */
+:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+}
+
+/* Tap target minimi per accessibilità */
+.nav-item, .btn, .sticky-cta__btn, .social-link {
+    min-height: 44px;
+    min-width: 44px;
+}
+
 .lead {
     font-size: 1.25rem;
     color: var(--muted);
@@ -225,6 +254,7 @@ a:hover {
 .services-section h2 {
     margin-top: 8px;
 }
+
 
 @keyframes fadeIn {
     from {
@@ -325,6 +355,7 @@ a:hover {
     margin-top: 8px;
     color: #d0d6e0;
     opacity: 0.9;
+    text-align: right;
 }
 
 /* Footer Styles */
@@ -493,5 +524,61 @@ a:hover {
     .footer-links {
         flex-direction: column;
         gap: 8px;
+    }
+}
+
+/* Sticky CTA (mobile) */
+.sticky-cta {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex; /* visibile anche su desktop */
+    gap: 8px;
+    padding: 8px env(safe-area-inset-right) calc(8px + env(safe-area-inset-bottom)) env(safe-area-inset-left);
+    background: rgba(15,18,32,0.8);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.25);
+    justify-content: center;
+    z-index: 999;
+}
+
+.sticky-cta__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #0f1220;
+    background: #fff;
+    box-shadow: var(--shadow);
+    min-width: 96px;
+}
+
+.sticky-cta__btn:hover {
+    text-decoration: none;
+    filter: brightness(0.95);
+}
+
+.sticky-cta__btn.call { background: #fff; }
+.sticky-cta__btn.whatsapp { background: #25D366; color: #0b2316; }
+.sticky-cta__btn.directions { background: #ffd166; }
+
+/* Nessuna limitazione: visibile a tutte le larghezze */
+
+/* Desktop: ancora più compatta, mantenendo buona usabilità */
+@media (min-width: 1024px) {
+    .sticky-cta {
+        gap: 8px;
+        padding: 8px env(safe-area-inset-right) calc(8px + env(safe-area-inset-bottom)) env(safe-area-inset-left);
+    }
+    .sticky-cta__btn {
+        font-size: 0.85rem;
+        padding: 8px 12px;
+        min-width: 88px;
     }
 }
