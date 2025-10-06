@@ -266,6 +266,7 @@ a:hover {
 }
 
 @media (max-width: 768px) {
+    body { font-size: 16px; }
     .header-content {
         padding: 32px 16px 20px;
     }
@@ -290,6 +291,9 @@ a:hover {
         font-size: 0.85rem;
         padding: 6px 10px;
     }
+
+    /* Evita che la sticky-cta copra i contenuti */
+    main { padding-bottom: 88px; }
 }
 
 @media (max-width: 640px) {
@@ -319,6 +323,17 @@ a:hover {
         align-items: center;
         gap: 6px;
     }
+
+    /* Griglia servizi 2 → 1 colonna su schermi piccoli */
+    .services {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 420px) {
+    .services {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Hero image con citazione */
@@ -339,6 +354,17 @@ a:hover {
     bottom: 10%;
     max-width: 520px;
     text-align: left;
+}
+
+@media (max-width: 640px) {
+    .hero-image { min-height: 220px; }
+    .image-quote {
+        left: 6%;
+        right: 6%;
+        bottom: 8%;
+        max-width: none;
+        text-align: center;
+    }
 }
 
 .image-quote blockquote {
@@ -542,6 +568,7 @@ a:hover {
     box-shadow: 0 -10px 30px rgba(0,0,0,0.25);
     justify-content: center;
     z-index: 999;
+    transition: transform 0.28s ease, opacity 0.28s ease;
 }
 
 .sticky-cta__btn {
@@ -581,4 +608,10 @@ a:hover {
         padding: 8px 12px;
         min-width: 88px;
     }
+}
+
+/* Stato nascosto per auto-hide */
+.sticky-cta.hidden {
+    transform: translateY(100%);
+    opacity: 0;
 }
