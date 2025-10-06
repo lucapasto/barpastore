@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const servicesList = document.querySelector('ul');
     const socialLinks = document.querySelectorAll('section:nth-of-type(2) a');
     const navItems = document.querySelectorAll('.nav-item');
+    const stickyCta = document.querySelector('.sticky-cta');
 
     // Animazione per la lista dei servizi (rispetta reduced motion)
     if (!prefersReducedMotion) {
@@ -79,6 +80,29 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Auto-hide della barra CTA su scroll down, show su scroll up (rispetta reduced motion)
+    if (stickyCta) {
+        let lastY = window.scrollY;
+        let ticking = false;
+        const onScroll = () => {
+            const currentY = window.scrollY;
+            const goingDown = currentY > lastY + 4; // soglia
+            const goingUp = currentY < lastY - 4;
+            if (!prefersReducedMotion) {
+                if (goingDown) stickyCta.classList.add('hidden');
+                if (goingUp) stickyCta.classList.remove('hidden');
+            }
+            lastY = currentY;
+            ticking = false;
+        };
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(onScroll);
+                ticking = true;
+            }
+        });
+    }
 });
 // Animazione titolo principale e sottotitolo
 document.addEventListener('DOMContentLoaded', () => {
